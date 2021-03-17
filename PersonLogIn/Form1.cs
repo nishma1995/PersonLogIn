@@ -25,13 +25,14 @@ namespace PersonLogIn
             connection.Open();
 
 
-            //SqlCommand command = new SqlCommand("SELECT * FROM Login where UserName='"+txtUserName.Text+"'", connection);
-            //SqlDataReader dataReader = command.ExecuteReader();
-            //if(dataReader.Read())
-            //{
-            //    dataReader.Close();
-            //    MessageBox.Show("Username Already exist..");
-            //}
+            SqlCommand command = new SqlCommand("SELECT * FROM Login where UserName='" + txtUserName.Text + "'", connection);
+            SqlDataReader dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                dataReader.Close();
+                MessageBox.Show("Username Already exist..");
+                txtName.Text = txtUserName.Text = txtPassword.Text = txtMalayalam.Text = txtEnglish.Text = txtMaths.Text = " ";
+            }
 
 
             //SqlCommand command = new SqlCommand("GetExistingUserName", connection);
@@ -45,11 +46,11 @@ namespace PersonLogIn
             //    MessageBox.Show("UserName=" + dataReader[1].ToString() + "Already exist");
             //}
 
-            //else
-            //{
+            else
+            {
 
 
-               SqlCommand command = new SqlCommand("PersonRegistrationSave", connection);
+                command = new SqlCommand("PersonRegistrationSave", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("Name", txtName.Text);
@@ -69,7 +70,7 @@ namespace PersonLogIn
                 this.Hide();
 
 
-            //}
+            }
         }
 
             private void btnLogin_Click(object sender, EventArgs e)
