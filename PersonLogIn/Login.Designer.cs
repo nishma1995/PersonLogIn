@@ -31,7 +31,7 @@ namespace PersonLogIn
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogIn = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@ namespace PersonLogIn
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btnLogIn);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label1);
@@ -63,12 +63,13 @@ namespace PersonLogIn
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
-            // textBox4
+            // txtPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(69, 229);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(162, 22);
-            this.textBox4.TabIndex = 8;
+            this.txtPassword.Location = new System.Drawing.Point(69, 229);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(162, 22);
+            this.txtPassword.TabIndex = 8;
             // 
             // label5
             // 
@@ -130,7 +131,7 @@ namespace PersonLogIn
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLogIn;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;

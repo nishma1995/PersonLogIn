@@ -14,7 +14,7 @@ namespace PersonLogIn
     public partial class Login : Form
     {
 
-        string connectionString = "@Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
+        string connectionString = "Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
         public Login()
         {
             InitializeComponent();
@@ -38,13 +38,14 @@ namespace PersonLogIn
 
             if (dataReader.HasRows == true)
             {
-                MessageBox.Show("UserName=" + dataReader[1].ToString() + "Already exist");
-            }
-            else
-            {
+                MessageBox.Show("valid");
                 this.Hide();
                 Home home = new Home();
                 home.Show();
+            }
+            else
+            {
+                MessageBox.Show("No Account");
             }
         }
     }

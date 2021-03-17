@@ -13,7 +13,7 @@ namespace PersonLogIn
 {
     public partial class RegistrationPage : Form
     {
-        string connectionString = "@Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
+        string connectionString = " Server = NISHMA\\SQLEXPRESS02; Database=LoginManagementSystem;Trusted_Connection=True";
         public RegistrationPage()
         {
             InitializeComponent();
@@ -34,22 +34,22 @@ namespace PersonLogIn
             //}
 
 
-            SqlCommand command = new SqlCommand("GetExistingUserName", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("UserName", txtUserName.Text);
-            SqlDataReader dataReader = command.ExecuteReader();
+            //SqlCommand command = new SqlCommand("GetExistingUserName", connection);
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.Parameters.AddWithValue("UserName", txtUserName.Text);
+            //SqlDataReader dataReader = command.ExecuteReader();
 
 
-            if (dataReader.HasRows == true)
-            {
-                MessageBox.Show("UserName=" + dataReader[1].ToString() + "Already exist");
-            }
+            //if (dataReader.HasRows == true)
+            //{
+            //    MessageBox.Show("UserName=" + dataReader[1].ToString() + "Already exist");
+            //}
 
-            else
-            {
+            //else
+            //{
 
 
-                command = new SqlCommand("PersonRegistrationSave", connection);
+               SqlCommand command = new SqlCommand("PersonRegistrationSave", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 command.Parameters.AddWithValue("Name", txtName.Text);
@@ -66,16 +66,17 @@ namespace PersonLogIn
                 MessageBox.Show("Registered Successfully");
                 Login obj = new Login();
                 obj.Show();
-                this.Close();
+                this.Hide();
 
 
-            }
+            //}
         }
 
             private void btnLogin_Click(object sender, EventArgs e)
             {
                 Login login = new Login();
                 login.Show();
+                this.Hide();
             }
         
     }
