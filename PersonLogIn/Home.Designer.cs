@@ -71,6 +71,7 @@ namespace PersonLogIn
             this.btnTheme.TabIndex = 7;
             this.btnTheme.Text = "Theme";
             this.btnTheme.UseVisualStyleBackColor = true;
+            this.btnTheme.Click += new System.EventHandler(this.btnTheme_Click);
             // 
             // lstBoxDetails
             // 
@@ -95,6 +96,8 @@ namespace PersonLogIn
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+            this.Load += new System.EventHandler(this.Home_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
