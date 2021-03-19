@@ -98,7 +98,16 @@ namespace PersonLogIn
 
         private void Home_MouseLeave(object sender, EventArgs e)
         {
-            //timer.Start();
+            timer.Interval = 100;
+            
+            
+                lblTimerHour.Text = "00";
+                lblTimerMinutes.Text = "00";
+                lblTimerSeconds.Text = "00";
+                minutes = 0;
+                hours = 0;
+                seconds = 0;
+            
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -128,9 +137,9 @@ namespace PersonLogIn
 
         private void Home_MouseMove(object sender, MouseEventArgs e)
         {
-            lblTimerHour.Text = "00";
-            lblTimerMinutes.Text= "00";
-            lblTimerSeconds.Text = "00";
+
+               
+
            // timer.Stop();
             //seconds++;
             //if (seconds > 59)

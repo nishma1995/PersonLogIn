@@ -21,7 +21,8 @@ namespace PersonLogIn
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (txtUserName.Text != string.Empty && txtPassword.Text != string.Empty && txtName.Text != string.Empty && txtMaths.Text != string.Empty && txtMalayalam.Text != string.Empty && txtEnglish.Text != string.Empty)
+            if (txtUserName.Text != string.Empty && txtPassword.Text != string.Empty && txtName.Text != string.Empty && txtMaths.Text != string.Empty && txtMalayalam.Text != string.Empty &&
+                txtEnglish.Text != string.Empty)
             {
 
 
