@@ -44,7 +44,7 @@ namespace PersonLogIn
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(184, 43);
+            this.lblName.Location = new System.Drawing.Point(170, 43);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(46, 17);
             this.lblName.TabIndex = 10;
@@ -52,7 +52,7 @@ namespace PersonLogIn
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(352, 378);
+            this.btnBack.Location = new System.Drawing.Point(426, 378);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(91, 44);
             this.btnBack.TabIndex = 9;
@@ -70,7 +70,7 @@ namespace PersonLogIn
             // 
             // btnTheme
             // 
-            this.btnTheme.Location = new System.Drawing.Point(231, 378);
+            this.btnTheme.Location = new System.Drawing.Point(296, 378);
             this.btnTheme.Name = "btnTheme";
             this.btnTheme.Size = new System.Drawing.Size(97, 44);
             this.btnTheme.TabIndex = 7;
@@ -82,7 +82,7 @@ namespace PersonLogIn
             // 
             this.lstBoxDetails.FormattingEnabled = true;
             this.lstBoxDetails.ItemHeight = 16;
-            this.lstBoxDetails.Location = new System.Drawing.Point(244, 91);
+            this.lstBoxDetails.Location = new System.Drawing.Point(296, 91);
             this.lstBoxDetails.Name = "lstBoxDetails";
             this.lstBoxDetails.Size = new System.Drawing.Size(221, 228);
             this.lstBoxDetails.TabIndex = 6;
@@ -138,6 +138,7 @@ namespace PersonLogIn
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
+            this.MouseLeave += new System.EventHandler(this.Home_MouseLeave);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Home_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();

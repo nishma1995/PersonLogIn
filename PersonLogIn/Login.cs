@@ -71,19 +71,19 @@ namespace PersonLogIn
             command.ExecuteNonQuery();
 
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
+            
 
             Person person = new Person();
-
-           person.ID = Convert.ToInt32(reader["Id"]);
-            person.Name = reader["Name"].ToString();
-            person.Left = Convert.ToInt32(Convert.ToInt32(reader["Left"]));
-            person.Top = Convert.ToInt32(Convert.ToInt32(reader["Top"]));
-            person.Username = reader["UserName"].ToString();
-            person.Color = reader["Color"].ToString();
+            if (reader.Read())
+            {
+                person.ID = Convert.ToInt32(reader["Id"]);
+                person.Name = reader["Name"].ToString();
+                person.Left = Convert.ToInt32(Convert.ToInt32(reader["Left"]));
+                person.Top = Convert.ToInt32(Convert.ToInt32(reader["Top"]));
+                person.Username = reader["UserName"].ToString();
+                person.Color = reader["Color"].ToString();
+            }
             return person;
-
-           
         }
 
     }
