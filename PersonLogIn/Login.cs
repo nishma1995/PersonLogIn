@@ -13,11 +13,12 @@ namespace PersonLogIn
 {
     public partial class Login : Form
     {
-        Person Person;
+        Person person = new Person();
         string connectionString = "Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
         public Login()
         {
             InitializeComponent();
+           
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -27,37 +28,38 @@ namespace PersonLogIn
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            connection.Open();
+            //SqlConnection connection = new SqlConnection(connectionString);
+            //connection.Open();
 
-            SqlCommand command = new SqlCommand("GetExistingUserName", connection);
-            command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("UserName", txtUserName.Text);
-            SqlDataReader dataReader = command.ExecuteReader();
+            //SqlCommand command = new SqlCommand("GetExistingUserName", connection);
+            //command.CommandType = CommandType.StoredProcedure;
+            //command.Parameters.AddWithValue("UserName", txtUserName.Text);
+            //SqlDataReader dataReader = command.ExecuteReader();
 
             Person LoginedPerson = _Login(txtUserName.Text, txtPassword.Text);
 
-            if (LoginedPerson!=null)
+            if (LoginedPerson != null)
 
 
             {
 
-                if (dataReader.HasRows == true)
+                //if (dataReader.HasRows == true)
 
-                {
+                //{
                     MessageBox.Show("valid");
                     this.Hide();
-                    Home home = new Home();
+                    Home home = new Home(LoginedPerson);
                     home.Show();
                 }
                 else
                 {
                     MessageBox.Show("No Account");
                 }
-            }
+            //}
 
 
         }
+
         private Person _Login(string username, string password)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -66,20 +68,22 @@ namespace PersonLogIn
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("UserName", username);
             command.Parameters.AddWithValue("Password", password);
+            command.ExecuteNonQuery();
 
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
 
             Person person = new Person();
-            Person.ID = Convert.ToInt32(reader["Id"]);
-            Person.Name = reader["Name"].ToString();
-            Person.Left = Convert.ToInt32(reader["Left"]);
-            Person.Top = Convert.ToInt32(reader["Top"]);
-            Person.Username = reader["UserName"].ToString();
-            Person.Color = reader["Color"].ToString();
-            return Person;
 
+           person.ID = Convert.ToInt32(reader["Id"]);
+            person.Name = reader["Name"].ToString();
+            person.Left = Convert.ToInt32(Convert.ToInt32(reader["Left"]));
+            person.Top = Convert.ToInt32(Convert.ToInt32(reader["Top"]));
+            person.Username = reader["UserName"].ToString();
+            person.Color = reader["Color"].ToString();
+            return person;
 
+           
         }
 
     }

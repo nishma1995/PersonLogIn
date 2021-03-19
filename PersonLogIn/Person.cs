@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonLogIn
 {
-    class Person
+   public class  Person
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -15,5 +15,6 @@ namespace PersonLogIn
         public string Password { get; set; }
         public int Left { get; set; }
         public int Top { get; set; }
+
     }
 }

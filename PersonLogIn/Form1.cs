@@ -32,6 +32,7 @@ namespace PersonLogIn
                 dataReader.Close();
                 MessageBox.Show("Username Already exist..");
                 txtName.Text = txtUserName.Text = txtPassword.Text = txtMalayalam.Text = txtEnglish.Text = txtMaths.Text = " ";
+                connection.Close();
             }
 
 
@@ -45,11 +46,11 @@ namespace PersonLogIn
             //{
             //    MessageBox.Show("UserName=" + dataReader[1].ToString() + "Already exist");
             //}
-
+           
             else
             {
 
-
+                dataReader.Close();
                 command = new SqlCommand("PersonRegistrationSave", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
@@ -59,6 +60,7 @@ namespace PersonLogIn
                 command.Parameters.AddWithValue("Malayalam", txtMalayalam.Text);
                 command.Parameters.AddWithValue("English", txtEnglish.Text);
                 command.Parameters.AddWithValue("Maths", txtMaths.Text);
+
 
                 command.ExecuteNonQuery();
                 connection.Close();

@@ -13,20 +13,27 @@ namespace PersonLogIn
 {
     public partial class Home : Form
     {
-         string connectionString = "Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
-        Person person;
+        string connectionString = "Server=NISHMA\\SQLEXPRESS02;Database=LoginManagementSystem;Trusted_Connection=True";
+        Person _person = new Person();
+        private int _ticks;
 
-        public Home()
+        public Home(Person person)
         {
             InitializeComponent();
-            
+    
+            _person = person;
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            timer.Start();
+           
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromArgb(Convert.ToInt32(person.Color));
-            this.Top = person.Top;
-            this.Left = person.Left;
+            
+            this.BackColor = Color.FromArgb(Convert.ToInt32(_person.Color));
+
+            this.Top = _person.Top;
+            this.Left = _person.Left;
 
 
         }
@@ -38,7 +45,7 @@ namespace PersonLogIn
             connection.Open();
             SqlCommand command = new SqlCommand("UpdateWindowPosition", connection);
             command.CommandType = CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("ID", personId);
+            command.Parameters.AddWithValue("Id", personId);
             command.Parameters.AddWithValue("Left", left);
             command.Parameters.AddWithValue("Top", top);
             command.ExecuteNonQuery();
@@ -48,12 +55,12 @@ namespace PersonLogIn
 
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
-            UpdateWindowPosition(this.Left, this.Top, person.ID);
+            UpdateWindowPosition(this.Left, this.Top, _person.ID);
         }
 
         private void btnTheme_Click(object sender, EventArgs e)
         {
-            SetColor(person.ID);
+            SetColor(_person.ID);
         }
         private void SetColor(int personId)
         {
@@ -71,5 +78,20 @@ namespace PersonLogIn
             connection.Close();
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //timer.Enabled = true;
+            //timer.Interval = 50;
+            _ticks--;
+            lblTimerHour.Text = _ticks.ToString();
+
+        }
+
+        private void Home_MouseMove(object sender, MouseEventArgs e)
+        {
+            lblTimerHour.Text = "0.00";
+            
+            timer.Start();
+        }
     }
 }

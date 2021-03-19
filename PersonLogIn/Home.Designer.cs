@@ -29,11 +29,16 @@ namespace PersonLogIn
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTheme = new System.Windows.Forms.Button();
             this.lstBoxDetails = new System.Windows.Forms.ListBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.lblTimerHour = new System.Windows.Forms.Label();
+            this.lblTimerSeconds = new System.Windows.Forms.Label();
+            this.lblTimerMinutes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -82,11 +87,46 @@ namespace PersonLogIn
             this.lstBoxDetails.Size = new System.Drawing.Size(221, 228);
             this.lstBoxDetails.TabIndex = 6;
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // lblTimerHour
+            // 
+            this.lblTimerHour.AutoSize = true;
+            this.lblTimerHour.Location = new System.Drawing.Point(64, 487);
+            this.lblTimerHour.Name = "lblTimerHour";
+            this.lblTimerHour.Size = new System.Drawing.Size(32, 17);
+            this.lblTimerHour.TabIndex = 11;
+            this.lblTimerHour.Text = "00 :";
+            // 
+            // lblTimerSeconds
+            // 
+            this.lblTimerSeconds.AutoSize = true;
+            this.lblTimerSeconds.Location = new System.Drawing.Point(121, 487);
+            this.lblTimerSeconds.Name = "lblTimerSeconds";
+            this.lblTimerSeconds.Size = new System.Drawing.Size(24, 17);
+            this.lblTimerSeconds.TabIndex = 12;
+            this.lblTimerSeconds.Text = "00";
+            // 
+            // lblTimerMinutes
+            // 
+            this.lblTimerMinutes.AutoSize = true;
+            this.lblTimerMinutes.Location = new System.Drawing.Point(93, 487);
+            this.lblTimerMinutes.Name = "lblTimerMinutes";
+            this.lblTimerMinutes.Size = new System.Drawing.Size(32, 17);
+            this.lblTimerMinutes.TabIndex = 13;
+            this.lblTimerMinutes.Text = "00 :";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 547);
+            this.Controls.Add(this.lblTimerMinutes);
+            this.Controls.Add(this.lblTimerSeconds);
+            this.Controls.Add(this.lblTimerHour);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
@@ -98,6 +138,7 @@ namespace PersonLogIn
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.Load += new System.EventHandler(this.Home_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Home_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,5 +151,9 @@ namespace PersonLogIn
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTheme;
         private System.Windows.Forms.ListBox lstBoxDetails;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label lblTimerHour;
+        private System.Windows.Forms.Label lblTimerSeconds;
+        private System.Windows.Forms.Label lblTimerMinutes;
     }
 }
